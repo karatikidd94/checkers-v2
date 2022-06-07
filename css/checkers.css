@@ -1,0 +1,31 @@
+
+td {
+    background-color: #ba7a3a;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+}
+
+.noPiece {
+    background-color: #f0d2b4;
+}
+
+.black-checker {
+    width: 80px;
+    height: 80px;
+    background-color: black;
+    border: 5px solid white;
+    border-radius: 50px;
+    margin: auto;
+    cursor: pointer;
+}
+
+.red-checker {
+    width: 80px;
+    height: 80px;
+    background-color: red;
+    border: 5px solid white;
+    border-radius: 50px;
+    margin: auto;
+    cursor: pointer;
+}
