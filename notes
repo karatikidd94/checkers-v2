@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/checkers.css">
+    <script defer src="js/checkers.js"></script>
+    <title>checkers</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <td id="s0" class="noPiece"></td>
+            <td id="s1"><p class="black-checker" id="A"></p></td>
+            <td id="s2" class="noPiece"></td>
+            <td id="s3"><p class="black-checker" id="B"></p></td>
+            <td id="s4" class="noPiece"></td>
+            <td id="s5"><p class="black-checker" id="C"></p></td>
+            <td id="s6" class="noPiece"></td>
+            <td id="s7"><p class="black-checker" id="D"></p></td>
+        </tr>
+        <tr>
+            <td id="s8"><p class="black-checker" id="E"></p></td>
+            <td id="s9" class="noPiece"></td>
+            <td id="s10"><p class="black-checker" id="F"></p></td>
+            <td id="s11" class="noPiece"></td>
+            <td id="s12" ><p class="black-checker" id="G"></p></td>
+            <td id="s13"  class="noPiece"></td>
+            <td id="s14"><p class="black-checker" id="7"></p></td>
+            <td id="s15" class="noPiece"></td>
+        </tr>
+        <tr>
+            <td id="s16" class="noPiece"></td>
+            <td id="s17"><p class="black-checker" id="8"></p></td>
+            <td id="s18" class="noPiece"></td>
+            <td id="s19"><p class="black-checker" id="9"></p></td>
+            <td id="s20" class="noPiece"></td>
+            <td id="s21"><p class="black-checker" id="10"></p></td>
+            <td id="s22" class="noPiece"></td>
+            <td id="s23"><p class="black-checker" id="11"></p></td>
+        </tr>
+        <tr>
+            <td id="s24"></td>
+            <td id="s25" class="noPiece"></td>
+            <td id="s26"></td>
+            <td id="s27" class="noPiece"></td>
+            <td id="s28"></td>
+            <td id="s29" class="noPiece"></td>
+            <td id="s30"></td>
+            <td id="s31" class="noPiece"></td>
+        </tr>
+        <tr>
+            <td id="s32" class="noPiece"></td>
+            <td id="s33"></td>
+            <td id="s34" class="noPiece"></td>
+            <td id="s35"></td>
+            <td id="s36" class="noPiece"></td>
+            <td id="s37"></td>
+            <td id="s38" class="noPiece"></td>
+            <td id="s39"></td>
+        </tr>
+        <tr>
+            <td id="s40"><p class="red-checker" id="12"></p></td>
+            <td id="s41" class="noPiece"></td>
+            <td id="s42"><p class="red-checker" id="13"></p></td>
+            <td id="s43" class="noPiece"></td>
+            <td id="s44"><p class="red-checker" id="14"></p></td>
+            <td id="s45" class="noPiece"></td>
+            <td id="s46"><p class="red-checker" id="15"></p></td>
+            <td id="s47" class="noPiece"></td>
+        </tr>
+        <tr>
+            <td id="s48" class="noPiece"></td>
+            <td id="s49"><p class="red-checker" id="16"></p></td>
+            <td id="s50" class="noPiece"></td>
+            <td id="s51"><p class="red-checker" id="17"></p></td>
+            <td id="s52" class="noPiece"></td>
+            <td id="s53"><p class="red-checker" id="18"></p></td>
+            <td id="s54" class="noPiece"></td>
+            <td id="s55"><p class="red-checker" id="19"></p></td>
+        </tr>
+        <tr>
+            <td id="s56"><p class="red-checker" id="20"></p></td>
+            <td id="s57" class="noPiece"></td>
+            <td id="s58"><p class="red-checker" id="21"></p></td>
+            <td id="s59" class="noPiece"></td>
+            <td id="s60"><p class="red-checker" id="22"></p></td>
+            <td id="s61" class="noPiece"></td>
+            <td id="s62"><p class="red-checker" id="23"></p></td>
+            <td id="63" class="noPiece"></td>
+        </tr>
+    </table>
+    
+</body>
+</html>
