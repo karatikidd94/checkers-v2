@@ -53,6 +53,7 @@ function giveCheckersEventListeners() {
                     console.log(selectedChecker);
                     turn = false;
                     
+                    
                 } else if(document.getElementById(`${playerChecker}`).hasAttribute('style') && playerChecker != null) {
                     console.log('I cleared Red!');
                     // console.log(selectedChecker);
@@ -85,6 +86,7 @@ function giveCheckersEventListeners() {
                     moveChecker(selectedChecker.checkerId, selectedChecker.indexOfBoardChecker, playerChecker);
                     console.log(selectedChecker);
                     turn = true;
+                    // giveCheckersEventListeners();
                     
                 } else if(document.getElementById(`${playerChecker}`).hasAttribute('style') && playerChecker != null) {
                     console.log('I cleared Black!');
@@ -235,6 +237,7 @@ function moveChecker(id, idx, newidx) {
         selectedChecker.indexOfBoardChecker = -1;
         selectedChecker.spaceSevenIdx = -1;
         selectedChecker.spaceNineIdx = -1;
+        giveCheckersEventListeners();
     } else {
         idString = id;
         document.getElementById(newidx).innerHTML = `<p class="black-checker" id="${idString}"></p>`;
@@ -245,6 +248,7 @@ function moveChecker(id, idx, newidx) {
         selectedChecker.spaceMinusSeven = -1;
         selectedChecker.spaceMinusNine = -1;
     }
+    
 }
 
 
