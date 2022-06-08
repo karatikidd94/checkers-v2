@@ -106,14 +106,12 @@ function giveCheckersEventListeners() {
     }
 }
 
-function resetBoard() {
-
-}
 
 function deselectChecker(a , b) { 
+    console.log(`PlayerChecker: ${a}`);
     console.log(`CheckerIdx: ${b}`);
     if(turn) {
-        document.getElementById(b).removeAttribute('style');
+        document.getElementById(a).removeAttribute('style');
         selected = false;
         document.getElementById(b-7).removeAttribute('style');
         selectedChecker.seventhSpace = false;
@@ -125,7 +123,7 @@ function deselectChecker(a , b) {
         selectedChecker.eighteenthSpace = false;
         
     } else {
-        document.getElementById(b).removeAttribute('style');
+        document.getElementById(a).removeAttribute('style');
         selected = false;
         document.getElementById(b+7).removeAttribute('style');
         selectedChecker.seventhSpace = false;
