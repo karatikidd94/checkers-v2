@@ -52,7 +52,6 @@ function giveCheckersEventListeners() {
     }
 }
 
-
 // Holds the length of the players checker count
 function getPlayerCheckers(evt) {
     if (turn) {
@@ -85,7 +84,6 @@ function resetBorders(evt) {
 
 // Reset selected checker
 function resetSelectedChecker() {
-    // console.log('Reset Selected Checker');
     selectedChecker.checkerId = -1;
     selectedChecker.indexOfBoardChecker = -1;
     selectedChecker.isKing = false;
@@ -101,14 +99,10 @@ function resetSelectedChecker() {
 
 // Grabs ID and index of the board squares its on
 function getSelectedChecker(evt) {
-    console.log(event.target.id);
     selectedChecker.checkerId = event.target.id;
     selectedChecker.indexOfBoardChecker = findChecker(selectedChecker.checkerId);
     checkAvailableSpaces();
 }
-
-// Check if selected checker is a king
-
 
 // Check available moves from selected checker
 function checkAvailableSpaces() {
@@ -325,11 +319,9 @@ function checkForWin() {
     } else {
         changePlayer();
     }
-    
 }
 
 function changePlayer() {
-    // console.log('Turn Changed');
     if (turn) {
         turn = false;
         elH.classList.remove('red-turn');
