@@ -12,6 +12,7 @@ const board = [null, '0', null, '1', null, '2', null, '3',
 const squares = document.querySelectorAll('td');
 let blackCheckers = document.querySelectorAll('p.black-checker');
 let redCheckers = document.querySelectorAll('p.red-checker');
+let elH = document.querySelector('h2');
 
 // Player properties
 let turn = true;
@@ -35,8 +36,6 @@ let selectedChecker = {
 }
 
 let findChecker = function (checkerId) {
-    console.log(`Checker Id: ${checkerId}`);
-    console.log(`Board Idx: ${board.indexOf(`${checkerId}`)}`);
     return board.indexOf(`${checkerId}`);
 };
 
@@ -44,13 +43,11 @@ let findChecker = function (checkerId) {
 function giveCheckersEventListeners() {
     if (turn) {
         for (let i = 0; i < redCheckers.length; i++) {
-            console.log('Red Checker Clicked');
-            redCheckers[i].addEventListener('click', (evt) => getPlayerCheckers(evt));
+            redCheckers[i].addEventListener('click', getPlayerCheckers);
         }
     } else {
         for (let i = 0; i < blackCheckers.length; i++) {
-            console.log('Black Checker Clicked');
-            blackCheckers[i].addEventListener('click', (evt) => getPlayerCheckers(evt));
+            blackCheckers[i].addEventListener('click', getPlayerCheckers);
         }
     }
 }
@@ -58,11 +55,10 @@ function giveCheckersEventListeners() {
 
 // Holds the length of the players checker count
 function getPlayerCheckers(evt) {
-    console.log(evt);
     if (turn) {
         playerCheckers = redCheckers;
     } else {
-        playerCheckesr = blackCheckers;
+        playerCheckers = blackCheckers;
     }
     removeSquareOnClick();
     resetBorders(evt);
@@ -77,7 +73,6 @@ function removeSquareOnClick() {
 
 // Reset borders
 function resetBorders(evt) {
-    console.log('Reset Border');
     for (let i = 0; i < playerCheckers.length; i++) {
         playerCheckers[i].style.border = '5px solid white';
     }
@@ -90,7 +85,7 @@ function resetBorders(evt) {
 
 // Reset selected checker
 function resetSelectedChecker() {
-    console.log('Reset Selected Checker');
+    // console.log('Reset Selected Checker');
     selectedChecker.checkerId = -1;
     selectedChecker.indexOfBoardChecker = -1;
     selectedChecker.isKing = false;
@@ -106,9 +101,8 @@ function resetSelectedChecker() {
 
 // Grabs ID and index of the board squares its on
 function getSelectedChecker(evt) {
-    console.log('Checker Selected');
-    console.log(`Checker ID in Selected Checker: ${evt.target.id}`)
-    selectedChecker.checkerId = parseInt(evt.target.id);
+    console.log(event.target.id);
+    selectedChecker.checkerId = event.target.id;
     selectedChecker.indexOfBoardChecker = findChecker(selectedChecker.checkerId);
     checkAvailableSpaces();
 }
@@ -159,12 +153,10 @@ function checkJumpSpaces() {
         selectedChecker.minusEighteenthSpace = true;
     }
     checkerConditions();
-    // addCheckerBorder();
 }
 
 // Check Checker Conditions
 function checkerConditions() {
-    console.log('Checker Conditions');
     if (selectedChecker.isKing) {
         addCheckerBorder()
     } else {
@@ -185,7 +177,7 @@ function checkerConditions() {
 
 // Adds green boarder to selected checker
 function addCheckerBorder() {
-    console.log('Add Checker Border');
+    console.log(selectedChecker);
     if (selectedChecker.isKing) {
         document.getElementById(selectedChecker.checkerId).style.border = '5px solid yellow';
     }
@@ -198,7 +190,6 @@ function addCheckerBorder() {
 
 // Adds green boarder to all available squares
 function addSquareBorder() {
-    console.log('Add Square Border');
     if (turn) { // Red Available Squares
         if (selectedChecker.minusSeventhSpace) {
             document.getElementById(`s${selectedChecker.indexOfBoardChecker - 7}`).style.border = '5px solid green';
@@ -256,10 +247,6 @@ function giveCellsClick() {
     }
 }
 function moveChecker(number) {
-    console.log('Move Checker');
-    console.log(`Clicked Square: ${number}`);
-    console.log(`Checker Id: ${selectedChecker.checkerId}`);
-    console.log(`Squares Idx: ${squares[selectedChecker.indexOfBoardChecker]}`)
     document.getElementById(selectedChecker.checkerId).remove();
     squares[selectedChecker.indexOfBoardChecker].innerHTML = '';
     if (turn) {
@@ -267,7 +254,6 @@ function moveChecker(number) {
             redCheckers = document.querySelectorAll('p.red-checker');
         } else {
             squares[selectedChecker.indexOfBoardChecker + number].innerHTML = `<p class="red-checker" id="${selectedChecker.checkerId}"></p>`;
-            console.log(squares[selectedChecker.indexOfBoardChecker + number]);
             redCheckers = document.querySelectorAll('p.red-checker');
         }
     } else {
@@ -289,11 +275,8 @@ function moveChecker(number) {
 
 // Change the board state in the back end
 function updateData(indexOfBoardChecker, newIdx, removeChecker) {
-    console.log('Update Data');
-    console.log(`Remove Checker: ${removeChecker}`);
     board[indexOfBoardChecker] = null;
     board[newIdx] = `${selectedChecker.checkerId}`;
-    console.log(`Checker Id: ${selectedChecker.checkerId}`);
     if (turn && selectedChecker.checkerId < 12 && newIdx >= 57) {
         document.getElementById(selectedChecker.checkerId).classList.add("king")
     }
@@ -303,16 +286,15 @@ function updateData(indexOfBoardChecker, newIdx, removeChecker) {
     if (removeChecker) {
         board[removeChecker] = null;
         if (turn && selectedChecker.checkerId >= 12) {
-            squares[removeChecker].innerHTML = "";
+            squares[removeChecker].innerHTML = '';
             scoreRed--;
         }
         if (turn === false && selectedChecker.checkerId <= 11) {
-            squares[removeChecker].innerHTML = "";
+            squares[removeChecker].innerHTML = '';
             scoreBlack--;
         }
     }
     resetBorders();
-    // resetSelectedChecker();
     removeSquareOnClick();
     removeEventListeners();
 }
@@ -333,37 +315,32 @@ function removeEventListeners() {
 
 function checkForWin() {
     if (scoreBlack === 0) {
-        divider.style.display = "none";
-        for (let i = 0; i < redTurnText.length; i++) {
-            // redTurnText[i].style.color = "black";
-            // blackTurntext[i].style.display = "none";
-            // redTurnText[i].textContent = "RED WINS!";
-        }
+        elH.classList.remove('red-turn');
+        elH.innerHTML = 'Black Wins!!!';
+        elH.classList.add('black-turn');
     } else if (scoreRed === 0) {
-        divider.style.display = "none";
-        for (let i = 0; i < blackTurntext.length; i++) {
-            // blackTurntext[i].style.color = "black";
-            // redTurnText[i].style.display = "none";
-            // blackTurntext[i].textContent = "BLACK WINS!";
-        }
+        elH.classList.remove('black-turn');
+        elH.innerHTML = 'Red Wins!!!';
+        elH.classList.add('red-turn');
+    } else {
+        changePlayer();
     }
-    changePlayer();
+    
 }
 
 function changePlayer() {
-    console.log('Turn Changed');
+    // console.log('Turn Changed');
     if (turn) {
         turn = false;
-        // for (let i = 0; i < redTurnText.length; i++) {
-        //     redTurnText[i].style.color = "lightGrey";
-        //     blackTurntext[i].style.color = "black";
-        // }
+        elH.classList.remove('red-turn');
+        elH.innerHTML = 'Blacks Turn';
+        elH.classList.add('black-turn');
+
     } else {
         turn = true;
-        // for (let i = 0; i < blackTurntext.length; i++) {
-        //     blackTurntext[i].style.color = "lightGrey";
-        //     redTurnText[i].style.color = "black";
-        // }
+        elH.classList.remove('black-turn');
+        elH.innerHTML = 'Reds Turn';
+        elH.classList.add('red-turn');
     }
     giveCheckersEventListeners();
 }
