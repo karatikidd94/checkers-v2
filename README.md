@@ -9,7 +9,7 @@
 3. Technologies Used: HTML, CSS, JavaScript
 
 
-4. Getting Started: <Put Link Here> 
+4. Getting Started: https://karatikidd94.github.io/checkers-v2/ 
   
   For my checkers game, Red will always make the first move. 
   
